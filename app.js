@@ -116,6 +116,10 @@ app.use((err,req,res,next)=>{
     res.status(statusCode).render("error.ejs",{message});
 });
 
+app.get("/", (req, res) => {
+    res.send("Welcome to WanderLust!");
+});
+
 app.listen(port,()=>{
     console.log(`port is running at ${port}`);
 });
