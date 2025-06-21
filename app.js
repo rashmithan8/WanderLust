@@ -106,7 +106,7 @@ app.use("/listing",listingRouter);
 app.use("/listing/:id/review",reviewRouter);
 app.use("/",userRouter);
 
-app.get("/", (req, res) => {
+app.get("/", (req, res,next) => {
     next(new ExpressError(404,"Page Not Found"));
 });
 // app.all("*",(req,res,next)=>{
