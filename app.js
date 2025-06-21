@@ -106,19 +106,19 @@ app.use("/listing",listingRouter);
 app.use("/listing/:id/review",reviewRouter);
 app.use("/",userRouter);
 
-
-app.all("*",(req,res,next)=>{
+app.get("/", (req, res) => {
     next(new ExpressError(404,"Page Not Found"));
 });
+// app.all("*",(req,res,next)=>{
+//     next(new ExpressError(404,"Page Not Found"));
+// });
 
 app.use((err,req,res,next)=>{
     let {statusCode=500,message="error occured"}=err;
     res.status(statusCode).render("error.ejs",{message});
 });
 
-// app.get("/", (req, res) => {
-//     res.send("Welcome to WanderLust!");
-// });
+
 
 app.listen(port,()=>{
     console.log(`port is running at ${port}`);
