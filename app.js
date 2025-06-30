@@ -20,6 +20,7 @@ const passport=require("passport");
 const LocalStrategy=require("passport-local")
 const User=require("./models/user.js");
 const userRouter=require("./routes/user.js");
+const ExpressError = require("./utils/ExpressError.js");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
