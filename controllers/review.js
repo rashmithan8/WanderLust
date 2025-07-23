@@ -15,7 +15,6 @@ module.exports.createReview = async(req,res)=>{
 
 module.exports.destroyReview = async(req,res)=>{
     const {id,reviewid}=req.params;
-
     await Listing.findByIdAndUpdate(id, {$pull : {reviews:reviewid}});
     await Review.findByIdAndDelete(reviewid);
     req.flash("success","Review deleted");

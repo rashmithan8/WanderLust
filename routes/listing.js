@@ -13,8 +13,11 @@ router
     .get(wrapAsync(listingController.index))
     .post( isLoggedIn,upload.single("listing[img]"), validatelisting,wrapAsync(listingController.createListing));
 
+router.get("/search",listingController.search);
+
 router.get("/new",isLoggedIn,wrapAsync(listingController.renderNewForm));
 
+router.get("/filter", wrapAsync(listingController.filterByCategory));
 
 router
     .route("/:id")

@@ -31,6 +31,23 @@ const listingSchema=new Schema({
     owner:{
         type:Schema.Types.ObjectId,
         ref:"User"
+    },
+    //changed here
+    category:{
+        type:String,
+        enum: [
+            'trending',
+            'rooms',
+            'iconic-cities',
+            'mountains',
+            'castles',
+            'amazing-pools',
+            'camping',
+            'farms',
+            'arctic',
+            'domes',
+            'boats'
+        ],
     }
 });
 

@@ -11,6 +11,8 @@
             margin-right: 2rem;
             margin-top: 2rem;
             opacity: 0.7;
+            color: black;
+            text-decoration: none;
         }
         .filter:hover{
             opacity: 1;
@@ -33,50 +35,72 @@
         }
     </style>
     <div id="filters">
-        <div class="filter">
+        <!-- added data categories -->
+        <a class="filter" href="/listing/filter?category=trending">
+        <div>
             <div><i class="fa-solid fa-fire"></i></div>
             <p>Trending</p>
         </div>
-        <div class="filter">
+        </a>
+        <a class="filter" href="/listing/filter?category=rooms">
+        <div>
             <div><i class="fa-solid fa-bed"></i></div>
             <p>Rooms</p>
         </div>
-        <div class="filter">
+        </a>
+        <a class="filter" href="/listing/filter?category=iconic-cities">
+        <div>
             <div><i class="fa-solid fa-mountain-city"></i></div>
             <p>Iconic Cities</p>
         </div>
-        <div class="filter">
+        </a>
+        <a class="filter" href="/listing/filter?category=mountains">
+        <div>
             <div><i class="fa-solid fa-mountain"></i></div>
             <p>Mountains</p>
         </div>
-        <div class="filter">
+        </a>
+        <a class="filter" href="/listing/filter?category=castles">
+        <div>
             <div><i class="fa-solid fa-chess-rook"></i></div>
             <p>Castles</p>
         </div>
-        <div class="filter">
+        <a class="filter" href="/listing/filter?category=amazing-pools">
+        <div>
             <div><i class="fa-solid fa-person-swimming"></i></div>
             <p>Amazing Pools</p>
         </div>
-        <div class="filter">
+        </a>
+        <a class="filter" href="/listing/filter?category=camping">
+        <div>
             <div><i class="fa-solid fa-campground"></i></div>
             <p>Camping</p>
         </div>
-        <div class="filter">
+        </a>
+        <a class="filter" href="/listing/filter?category=farms">
+        <div>
             <div><i class="fa-solid fa-tractor"></i></div>
             <p>Farms</p>
         </div>
-        <div class="filter">
+        </a>
+        <a class="filter" href="/listing/filter?category=arctic">
+        <div>
             <div><i class="fa-solid fa-snowflake"></i></div>
             <p>Arctic</p>
         </div>
-        <div class="filter">
+        </a>
+        <a class="filter" href="/listing/filter?category=domes">
+        <div>
             <div><i class="fa-solid fa-igloo"></i></div>
             <p>Domes</p>
         </div>
-        <div class="filter">
+        </a>
+        <a class="filter" href="/listing/filter?category=boats">
+        <div>
             <div><i class="fa-solid fa-sailboat"></i></i></div>
             <p>Boats</p>
         </div>
+        </a>
         <div class="tax-toggle">
             <div class="form-check-reverse form-switch">
                 <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
@@ -88,7 +112,7 @@
     <% for(let listing of allListings){ %>
         <a href="/listing/<%=listing._id%>" class="listing-link">
         <div class="card col listing-card">
-            <img src="<%=listing.img.url%>" 
+            <img src="<%=listing.img.url%>"
                 class="card-img-top" 
                 alt="listing_img" 
                 style="height: 20rem">
@@ -107,18 +131,16 @@
     <% } %>
     </div>
     
+
    <script>
-    let taxSwitch=document.getElementById("switchCheckDefault");
-    taxSwitch.addEventListener("click",()=>{
+    let taxSwitch = document.getElementById("switchCheckDefault");
+    taxSwitch.addEventListener("click", () => {
         let taxInfo = document.getElementsByClassName("tax-info");
-        for(info of taxInfo){
-            if(info.style.display !="inline"){
-                info.style.display="inline";
-            }else{
-                info.style.display="none";
-            }
+        for (let info of taxInfo) {
+            info.style.display = info.style.display !== "inline" ? "inline" : "none";
         }
     });
-   </script> 
+    </script>
+
 </body>
 

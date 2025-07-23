@@ -46,6 +46,23 @@
             <div class="invalid-feedback">Please enter Location</div>
         </div>
         <br><br>
+        <div>
+    <label for="category" class="form-label">Category</label>
+    <select name="listing[category]" class="form-select" required>
+        <option value="trending" <%= listings.category === 'trending' ? 'selected' : '' %>>Trending</option>
+        <option value="rooms" <%= listings.category === 'rooms' ? 'selected' : '' %>>Rooms</option>
+        <option value="iconic-cities" <%= listings.category === 'iconic-cities' ? 'selected' : '' %>>Iconic Cities</option>
+        <option value="mountains" <%= listings.category === 'mountains' ? 'selected' : '' %>>Mountains</option>
+        <option value="castles" <%= listings.category === 'castles' ? 'selected' : '' %>>Castles</option>
+        <option value="amazing-pools" <%= listings.category === 'amazing-pools' ? 'selected' : '' %>>Amazing Pools</option>
+        <option value="camping" <%= listings.category === 'camping' ? 'selected' : '' %>>Camping</option>
+        <option value="farms" <%= listings.category === 'farms' ? 'selected' : '' %>>Farms</option>
+        <option value="arctic" <%= listings.category === 'arctic' ? 'selected' : '' %>>Arctic</option>
+        <option value="domes" <%= listings.category === 'domes' ? 'selected' : '' %>>Domes</option>
+        <option value="boats" <%= listings.category === 'boats' ? 'selected' : '' %>>Boats</option>
+    </select>
+    <div class="invalid-feedback">Please select a Category</div>
+</div>
         <button class="btn btn-dark add-btn">Edit</button>
     </form>
     <br>

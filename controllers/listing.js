@@ -66,3 +66,26 @@ module.exports.destroyListing = async(req,res)=>{
     req.flash("success","Listing Deleted");
     res.redirect("/listing");
 }
+
+
+module.exports.filterByCategory = async (req, res) => {
+    let { category } = req.query;  //query bez filter?category=something  this is how url looks like here
+    // Return all listings if no category is passed
+    let query = category ? { category } : {};
+    let allListings = await Listing.find(query);
+    res.render("listing/index", { allListings });
+}
+
+
+module.exports.search=async (req, res) => {
+    let query = req.query.q;
+        // Case-insensitive partial match using regex
+    let allListings = await Listing.find({
+        title: { $regex: query, $options: "i" }  //Find listings where the title matches the user's search query, using a regular expression ($regex) that is case-insensitive ($options: "i")
+    });
+    if(!allListings){
+        req.flash("error","No listings found.");
+        return res.redirect("/listing");
+    }
+    res.render("listing/index", { allListings });
+}
