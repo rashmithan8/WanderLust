@@ -1,0 +1,82 @@
+<% layout("/layouts/boilerplate.ejs") %>
+
+
+<div class="row mt-4">
+    <h3><b>Confirm and pay</b></h3>
+    <div class="col-md-6">
+      
+      <div class="card p-3  mt-2" style="width: 34rem;">
+        <h4>Your trip</h4>
+        <p class="card-text"><strong>Dates:</strong> <%= checkin %> - <%= checkout %></p>
+        <hr>
+        <p class="card-text"><strong>Guests:</strong> <%= guests %> guest(s)</p>
+      </div>
+      <br>
+
+      <div class="card p-3" style="width: 34rem;">
+        <h4>Guest information</h4>
+        <form action="/reserve/<%= listing._id %>" method="POST" novalidate class="needs-validation">
+          <div>
+            <input type="hidden" name="checkin" value="<%= checkin %>">
+            <input type="hidden" name="checkout" value="<%= checkout %>">
+            <input type="hidden" name="guests" value="<%= guests %>">
+          </div>
+          <div>
+            <label for="firstName" class="form-label">First Name</label>
+            <input name="firstName" id="firstName" type="text" placeholder="First name" class="form-control" required/>
+            <div class="invalid-feedback">FirstName is required</div>
+          </div>
+          <div>
+            <label for="lastName" class="form-label">LastName</label>
+            <input name="lastName" id="lastName" placeholder="Last name" type="text" class="form-control" required/>
+            <div class="invalid-feedback">LastName is required</div>
+          </div>
+          <div>
+            <label for="email" class="form-label">Email</label>
+            <input name="email" id="email" type="email" placeholder="Email" class="form-control" required/>
+            <div class="invalid-feedback">Email is required</div>
+          </div>
+      </div>
+    
+      <br>
+
+      <div class="card p-3 mb-3" style="width: 34rem;">
+        <h4>Payment Method</h4>
+        <div>
+          <label for="cardNumber" class="form-label">Card Number</label>
+          <input name="cardNumber" id="cardNumber" class="form-control" required/>
+          <div class="invalid-feedback">Card Number is required</div>
+        </div>
+        <div>
+          <label for="expiry" class="form-label">Expiry Date</label>
+          <input name="expiry" id="expiry" placeholder="MM/YY" class="form-control" required/>
+          <div class="invalid-feedback">Expiry Date is required</div>
+        </div>
+        <div>
+          <label for="cvv" class="form-label">CCV</label>
+          <input name="cvv" id="cvv" class="form-control" required/>
+          <div class="invalid-feedback">CCV is required</div>
+        </div>
+          <div>
+            <label for="nameOnCard" class="form-label">Name on card</label>
+            <input name="nameOnCard" id="nameOnCard" class="form-control" required/>
+            <div class="invalid-feedback">Name is required</div>
+          </div>
+      </div>
+
+    </div>
+
+
+    <div class="col-md-6 h-25 mt-2 p-3 card" style="width: 34rem;">
+      <h5><%= listing.title %></h5>
+      <hr>
+      <p>₹<%= listing.price %> × <%= nights %> nights = ₹<%= price %></p>
+      <p>Cleaning fee: ₹<%= cleaningFee %></p>
+      <p>Service fee: ₹<%= serviceFee %></p>
+      <p>Taxes: ₹<%= tax %></p>
+      <hr>
+      <p><b>Total: ₹<%= total %></b></p>
+      <button type="submit" class="btn btn-danger mt-2">Confirm and Pay ₹<%= total %></button>
+      </form>
+    </div>
+</div>

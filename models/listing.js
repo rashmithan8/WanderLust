@@ -48,7 +48,11 @@ const listingSchema=new Schema({
             'domes',
             'boats'
         ],
-    }
+    },
+    reservations: [{
+        type: Schema.Types.ObjectId,
+        ref: "Reservation"
+    }],
 });
 
 listingSchema.post("findOneAndDelete",async(listing)=>{       //this is triggered when findByIdAndDelete is performed listingSchema

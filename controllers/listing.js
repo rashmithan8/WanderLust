@@ -89,3 +89,4 @@ module.exports.search=async (req, res) => {
     }
     res.render("listing/index", { allListings });
 }
+

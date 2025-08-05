@@ -21,6 +21,7 @@ const LocalStrategy=require("passport-local")
 const User=require("./models/user.js");
 const userRouter=require("./routes/user.js");
 const ExpressError = require("./utils/ExpressError.js");
+const reserveRouter=require("./routes/reserve.js");
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -105,6 +106,7 @@ app.use((req,res,next)=>{
 
 app.use("/listing",listingRouter);
 app.use("/listing/:id/review",reviewRouter);
+app.use("/reserve",reserveRouter);
 app.use("/",userRouter);
 
 app.get("/", (req, res,next) => {
@@ -124,3 +126,13 @@ app.use((err,req,res,next)=>{
 app.listen(port,()=>{
     console.log(`port is running at ${port}`);
 });
+
+
+
+//Note
+//filter and search done
+//reservatn model created
+//booking page done
+//todo 1 -> profile (listings created , hotels booked)
+//todo 2 ->cant book if already reserved by others
+//todo 3 ->payment (optional)

@@ -20,7 +20,6 @@
     <% if(currUser && currUser._id.equals(listings.owner._id)){ %>
     <div class="col-1 btns">
         <a href="/listing/<%=listings._id%>/edit"><button class="btn btn-dark offset-2 add-btn">Edit</button></a>
-    <br><br>
             
         <form action="/listing/<%=listings._id%>?_method=DELETE" method="POST">
             <button class="btn btn-dark delete-btn offset-4">Delete</button>
@@ -28,7 +27,38 @@
     </div>  
     <% } %>
     </div> 
+
+
+    <br><br>
+    <div class="col-8 offset-3 mb-3 card p-3">
+        <form action="/reserve/<%= listings._id %>" method="GET" novalidate class="needs-validation">
+            <h4>₹<%= listings.price %> / night</h4>
+
+            <div>
+                <label for="checkin" class="form-label">Check-in:</label>
+                <input type="date" name="checkin" class="form-control" required><br>
+                <div class="invalid-feedback">Please select Check-in date</div>
+            </div>
+            <div >
+                <label for="checkout" class="form-label">Check-out:</label>
+                <input type="date" name="checkout" class="form-control" required><br>
+                <div class="invalid-feedback">Please select Check-out date</div>
+            </div>
+            <div>
+                <label for="guests" class="form-label">Guests:</label>
+                <select name="guests" class="form-control" required>
+                    <option value="1">1 guest</option>
+                    <option value="2">2 guests</option>
+                    <option value="3">3 guests</option>
+                </select>
+            </div>
+            <br><br>
+            <button class="btn btn-dark add-btn w-40" type="submit">Reserve</button>
+        </form>
+    </div>
     
+
+  <br>
     <div class="col-8 offset-3 mb-3">
         <hr>
         <% if(currUser ){ %>
@@ -80,5 +110,7 @@
             <% } %>
         </div>
     </div>
+
    
 </div>
+
